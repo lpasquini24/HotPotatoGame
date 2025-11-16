@@ -31,6 +31,7 @@ namespace HotPotatoGame{
         }
         public void Dash(Vector2 dir)
         {
+            GetComponent<AudioSource>().Play();
             if (cooldownTimer > 0) return;
             dashDir = new Vector3(dir.x, 0f, dir.y);
             dashTimer = dashTime;
