@@ -29,9 +29,9 @@ namespace HotPotatoGame {
         {
             if(team1lives <= 0)
             {
-                EndMinigame(Team.Two);
+                StartCoroutine(EndSequence(Team.Two));
             }else if (team2lives <= 0){
-                EndMinigame(Team.One);
+                StartCoroutine(EndSequence(Team.One));
             }
         }
 
@@ -63,6 +63,15 @@ namespace HotPotatoGame {
             team2lives--;
             CheckForLoss();
             UpdateDisplay();
+        }
+
+        public IEnumerator EndSequence(Team winner)
+        {
+            Time.timeScale = 0.1f;
+            yield return new WaitForSeconds(0.5f);
+            Time.timeScale = 1f;
+            EndMinigame(winner);
+            yield break;
         }
     }
 }

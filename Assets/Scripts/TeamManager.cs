@@ -23,6 +23,8 @@ namespace HotPotatoGame {
 
         public static TeamManager instance;
 
+        public GameObject winnerText;
+
         private void Awake()
         {
             instance = this;
