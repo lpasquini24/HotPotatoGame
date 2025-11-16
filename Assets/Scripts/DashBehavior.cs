@@ -19,6 +19,9 @@ namespace HotPotatoGame{
         private ScarecrowPawn pawn;
         public LayerMask playerMask;
 
+        public AudioSource dashSound;
+        public AudioSource hitSound;
+
         private Vector3 dashDir;
         private Rigidbody rb;
         private float olddrag;
@@ -32,7 +35,7 @@ namespace HotPotatoGame{
         public void Dash(Vector2 dir)
         {
             if (cooldownTimer > 0) return;
-            GetComponent<AudioSource>().Play();
+            dashSound.Play();
             dashDir = new Vector3(dir.x, 0f, dir.y);
             dashTimer = dashTime;
             pawn.inactiveTimer = dashTime;
@@ -72,6 +75,7 @@ namespace HotPotatoGame{
             // check if dashing into another player
             if((dashTimer >= 0) && ((playerMask & (1 << obj.layer)) != 0))
             {
+                hitSound.Play();
                 // stun the punched player
                 obj.GetComponent<ScarecrowPawn>().inactiveTimer = knockbackRecoveryTime;
 
