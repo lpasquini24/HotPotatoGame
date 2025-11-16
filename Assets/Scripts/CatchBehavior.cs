@@ -10,14 +10,23 @@ namespace HotPotatoGame
         public GameObject hand;
         public LayerMask potatoMask;
         private float inactiveTimer = 0; // if > 0, player cannot pick up the potato
-        public float postPunchCooldown = 0.5f; // amount of time after punch until player can pick up potato
+        public float postPunchCooldown = 0.2f; // amount of time after punch until player can pick up potato
 
         public void Update()
         {
+            if(GetComponent<Collider>().enabled == false)
+            {
+                GetComponent<Collider>().enabled = true;
+            }
+
             // decrement timer
             if (inactiveTimer > 0)
             {
                 inactiveTimer -= Time.deltaTime;
+                if(inactiveTimer <= 0)
+                {
+                    GetComponent<Collider>().enabled = false;
+                }
             }
         }
         private void OnTriggerEnter(Collider collider)
