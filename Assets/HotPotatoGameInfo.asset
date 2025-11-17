@@ -13,12 +13,26 @@ MonoBehaviour:
   m_Name: HotPotatoGameInfo
   m_EditorClassIdentifier: 
   minigameName: Hot Potato
-  thumbnail: {fileID: 0}
+  thumbnail: {fileID: 21300000, guid: 771352efd86e93d47a4552ff0b9d4d7d, type: 3}
   scene:
-    m_SceneAsset: {fileID: 102900000, guid: 0ac172cef94c5774c8b1e1e0da25faad, type: 3}
-    m_SceneName: RichardTestScene
-  minimumPlayers: 4
-  description: 
-  controls: 
-  credits: 
-  attributions: 
+    m_SceneAsset: {fileID: 102900000, guid: 51a91b67e50b0b44bbbc23d1ab5ab4f4, type: 3}
+    m_SceneName: FinalFinalScene
+  minimumPlayers: 1
+  description: You are a group of scarecrows fighting over a hot potato! Hold on
+    to the potato until it heats up, then throw it to create a fireball! Eliminate
+    the enemy team with fire to win. Pass to your teammate and get launched by haybales
+    to outmaneuver your opponent.
+  controls: 'WASD/Joystick - Move
+
+    Spacebar/A Button - Dash/Throw'
+  credits: 'Luca Pasquini
+
+    Richard DeBlasio
+
+    Ryan Kattau'
+  attributions: '"Hillbilly Swing" Kevin MacLeod (incompetech.com)
+
+    Licensed
+    under Creative Commons: By Attribution 4.0 License
+
+    http://creativecommons.org/licenses/by/4.0/'
