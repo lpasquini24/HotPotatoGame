@@ -13,6 +13,8 @@ namespace HotPotatoGame {
         private float heatTimer = 0f;
         private float explodeTimer = 0f;
         public float explosionRadius;
+        public bool destroyOnExplode;
+        private bool destroyed = false;
 
         [SerializeField] private float initPulsingSpeed;
         private float currPulsingSpeed;
@@ -67,7 +69,7 @@ namespace HotPotatoGame {
         // Update is called once per frame
         void Update()
         {
-
+            if (destroyed) return;
             //Check if on fire
             if(GetComponent<ThrowableBehavior>().isPickedUp && isOnFire)
             {
@@ -118,7 +120,7 @@ namespace HotPotatoGame {
         // trigger the explosion
         private void OnCollisionEnter(Collision collision)
         {
-            if (isOnFire)
+            if (isOnFire && !GetComponent<ThrowableBehavior>().isPickedUp)
             {
                 if(collision.gameObject != recentThrower) blowUp();
             }
@@ -132,6 +134,18 @@ namespace HotPotatoGame {
             explosion.GetComponent<MeshRenderer>().enabled = false;
             explosion.transform.SetParent(transform);
             explosion.transform.localPosition = Vector3.zero;
+
+            if (destroyOnExplode)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+                destroyed = true;
+                isOnFire = false;
+                fireParticles.Stop();
+                yield return new WaitForSeconds(1f);
+                Destroy(this.gameObject);
+                Destroy(explosion);
+
+            }
             yield break;
         }
 

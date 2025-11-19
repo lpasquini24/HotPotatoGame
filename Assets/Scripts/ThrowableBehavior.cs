@@ -26,7 +26,7 @@ namespace HotPotatoGame
 
         // called when the player picks up a potato
         // hand is the transform that should hold the potato
-        public void PickUp(GameObject hand)
+        public virtual void PickUp(GameObject hand)
         {
             if (isPickedUp) return;
             isPickedUp = true;
@@ -37,7 +37,7 @@ namespace HotPotatoGame
         }
 
         // called when a player drops the potato
-        public void Drop()
+        public virtual void Drop()
         {
             if (!isPickedUp) return;
             isPickedUp = false;

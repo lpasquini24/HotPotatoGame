@@ -12,6 +12,8 @@ namespace HotPotatoGame {
         public TextMeshProUGUI team1text;
         public TextMeshProUGUI team2text;
 
+        public TextMeshProUGUI winsText;
+
         public ScarecrowPawn[] pawns;
 
         public void Start()
@@ -68,9 +70,12 @@ namespace HotPotatoGame {
         public IEnumerator EndSequence(Team winner)
         {
             Time.timeScale = 0.1f;
+            winsText.enabled = true;
+            winsText.text = (winner == Team.One) ? "Team 1 Wins!" : "Team 2 Wins!";
             yield return new WaitForSeconds(0.5f);
             Time.timeScale = 1f;
             EndMinigame(winner);
+            winsText.enabled = false;
             yield break;
         }
     }

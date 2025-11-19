@@ -18,6 +18,7 @@ namespace HotPotatoGame
 
         public void Die()
         {
+            GetComponentInChildren<CatchBehavior>().Drop();
             if (GetComponent<ScarecrowPawn>().team == Team.One)
             {
                 sm.SubtractTeam1();
